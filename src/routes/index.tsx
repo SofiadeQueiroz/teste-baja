@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import capturedCSS from "../styles/site.css?raw";
 
@@ -8,11 +9,92 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+const NAV_MENU_LINKS: Array<{ label: string; href: string }> = [
+  { label: "Página 1", href: "#page-PB2Yts1Zp5TPGFN1" },
+  { label: "INÍCIO", href: "#page-PB0lVCsF44ldPkh3" },
+  { label: "SOBRE NÓS", href: "#page-PB7tCxxg6gWxgYfZ" },
+  { label: "SUBSISTEMAS", href: "#page-PBfTrpCx2yKn2tzj" },
+  { label: "PROCESSO SELETIVO", href: "#page-PBmLW147XG61KMx8" },
+  { label: "CONTATO", href: "#page-PBd9dBlmVHFDp1Bl" },
+  { label: "Página 8", href: "#page-PBJDNlMZQZL0S3fM" },
+  { label: "CATÁLOGO", href: "#page-PBJdxCGGxwyVsMx7" },
+  { label: "Página 10", href: "#page-PB4cVCQB2fy2J5Cg" },
+  { label: "Página 11", href: "#page-PB6pdV52p0NSqhL7" },
+  { label: "Página 12", href: "#page-PBZj4kG5GcZh7fml" },
+  { label: "Página 13", href: "#page-PBTJfJlQgycg8pWk" },
+  { label: "Página 14", href: "#page-PBSxbhzSm89vMCjF" },
+  { label: "Página 15", href: "#page-PBCx0nGgxs7Ycqkw" },
+  { label: "Página 16", href: "#page-PBzJPKQZqwNQFsxg" },
+  { label: "Página 17", href: "#page-PB3zxYFnG6yxkyhf" },
+  { label: "Página 18", href: "#page-PBDP1j31DYYk348L" },
+];
+
 function Index() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const wasOpenRef = useRef(false);
+
+  useEffect(() => {
+    if (menuOpen) {
+      wasOpenRef.current = true;
+      closeButtonRef.current?.focus();
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setMenuOpen(false);
+      };
+      document.addEventListener("keydown", onKeyDown);
+      return () => document.removeEventListener("keydown", onKeyDown);
+    }
+    if (wasOpenRef.current) {
+      wasOpenRef.current = false;
+      menuButtonRef.current?.focus();
+    }
+  }, [menuOpen]);
+
   return (
     <>
       <style>{capturedCSS}</style>
       <div id="root">
+        {menuOpen && (
+          <>
+            <div
+              className="fixed inset-0 z-[10000]"
+              style={{ backgroundColor: "rgba(14, 19, 24, 0.4)" }}
+              onClick={() => setMenuOpen(false)}
+            />
+            <div
+              role="dialog"
+              aria-label="Navigation menu"
+              className="fixed right-0 top-0 z-[10001] h-full w-[230px] overflow-y-auto"
+              style={{ backgroundColor: "rgb(255, 255, 255)", boxShadow: "rgba(14, 19, 24, 0.25) -2px 0 18px 0px" }}
+            >
+              <button
+                ref={closeButtonRef}
+                type="button"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+                className="absolute right-[12px] top-[12px] cursor-pointer border-none bg-transparent p-[4px]"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24">
+                  <path fill="#304254" d="M6.22 6.22a.75.75 0 0 1 1.06 0L12 10.94l4.72-4.72a.75.75 0 1 1 1.06 1.06L13.06 12l4.72 4.72a.75.75 0 1 1-1.06 1.06L12 13.06l-4.72 4.72a.75.75 0 0 1-1.06-1.06L10.94 12 6.22 7.28a.75.75 0 0 1 0-1.06Z" />
+                </svg>
+              </button>
+              <nav className="flex flex-col items-start gap-[30px] px-[24px] pb-[24px] pt-[64px]">
+                {NAV_MENU_LINKS.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="no-underline"
+                    style={{ color: "rgb(48, 66, 84)", fontSize: "16px", lineHeight: "22px" }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </nav>
+            </div>
+          </>
+        )}
         <div className="h-full relative w-full [-webkit-tap-highlight-color:transparent]">
           <main className="flex flex-col h-full justify-center overflow-hidden">
             <div className="flex flex-col h-full overflow-hidden relative w-full">
