@@ -229,11 +229,11 @@ function Header() {
 
       {open && (
         <>
-          <div className="fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
+          <div className="fixed inset-x-0 top-0 z-50 h-screen bg-ink/60 backdrop-blur-sm" onClick={() => setOpen(false)} />
           <div
             role="dialog"
             aria-label="Menu de navegação"
-            className="fixed right-0 top-0 z-50 flex h-full w-[280px] flex-col bg-wine-deep shadow-2xl"
+            className="fixed right-0 top-0 z-50 flex h-screen w-[280px] flex-col bg-wine-deep shadow-2xl"
           >
             <div className="flex h-[72px] items-center justify-between px-5">
               <img src={SNAKE_LOGO} alt="" className="h-8 w-auto" />
