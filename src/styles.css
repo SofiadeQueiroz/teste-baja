@@ -59,6 +59,15 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  /* Reptiles Baja brand tokens */
+  --color-wine: var(--wine);
+  --color-wine-deep: var(--wine-deep);
+  --color-ember: var(--ember);
+  --color-flame: var(--flame);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --font-display: "Archivo", sans-serif;
+  --font-sans: "Space Grotesk", sans-serif;
 }
 
 :root {
@@ -95,6 +104,13 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  /* Reptiles Baja brand palette */
+  --wine: oklch(0.36 0.095 14);
+  --wine-deep: oklch(0.22 0.055 15);
+  --ember: oklch(0.66 0.17 42);
+  --flame: oklch(0.8 0.15 80);
+  --cream: oklch(0.955 0.02 85);
+  --ink: oklch(0.17 0.03 15);
 }
 
 .dark {
@@ -137,9 +153,44 @@
     border-color: var(--color-border);
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+    font-family: var(--font-sans);
+  }
+
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+}
+
+/* Scroll-reveal animation used across the landing page */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
@@ -163,7 +214,7 @@
    utilities (bg-<name>, text-<name>, font-<name>). var() values live in
    the imported stylesheet's :root. */
 @theme inline {
-  --font-sans: "Times New Roman";
+  --font-sans: "Space Grotesk", sans-serif;
   --color-site-import-background: var(--site-import-background);
   --color-site-import-foreground: var(--site-import-foreground);
   --color-site-import-primary: var(--site-import-primary);
