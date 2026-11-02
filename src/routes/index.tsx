@@ -410,7 +410,7 @@ function Index() {
                                   </div>
                                 </div>
                               </div>
-                              <button className={"E99E4w items-center border-current border-none cursor-pointer flex justify-center my-0 mx-[4px] py-0 px-[4px] transition-opacity duration-100 ease-out [-webkit-tap-highlight-color:transparent] [border-image:none] [border-width:medium] [&:hover]:opacity-60"} type="button" aria-label="Navigation Menu">
+                              <button ref={menuButtonRef} onClick={() => setMenuOpen(true)} aria-expanded={menuOpen} className={"E99E4w items-center border-current border-none cursor-pointer flex justify-center my-0 mx-[4px] py-0 px-[4px] transition-opacity duration-100 ease-out [-webkit-tap-highlight-color:transparent] [border-image:none] [border-width:medium] [&:hover]:opacity-60"} type="button" aria-label="Navigation Menu">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="30" height="30">
                                   <path fill="#304254" d="M4 6a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 6Zm0 6a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H4.75A.75.75 0 0 1 4 12Zm.75 5.25a.75.75 0 0 0 0 1.5h14.5a.75.75 0 0 0 0-1.5H4.75Z" />
                                 </svg>
@@ -624,7 +624,7 @@ function ImportedSection() {
                           <div className="h-full transition-transform duration-300 w-full">
                             <div className="h-full overflow-hidden w-full">
                               <div className="relative" style={{ width: "32.7471px", height: "24.3557px", transform: "translate(0px, -1.77636e-15px) rotate(0deg)" }} data-site-import-responsive="227">
-                                <img className="block h-full absolute w-full" width="800" height="595" draggable="false" />
+                                <img className="block h-full absolute w-full" width="800" height="595" draggable="false" src="/site-assets/nav-menu-icon.png" alt="" />
                               </div>
                             </div>
                           </div>
