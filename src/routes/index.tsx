@@ -36,19 +36,20 @@ function Index() {
   const wasOpenRef = useRef(false);
 
   useEffect(() => {
-    if (menuOpen) {
-      wasOpenRef.current = true;
-      closeButtonRef.current?.focus();
-      const onKeyDown = (e: KeyboardEvent) => {
-        if (e.key === "Escape") setMenuOpen(false);
-      };
-      document.addEventListener("keydown", onKeyDown);
-      return () => document.removeEventListener("keydown", onKeyDown);
+    if (!menuOpen) {
+      if (wasOpenRef.current) {
+        wasOpenRef.current = false;
+        menuButtonRef.current?.focus();
+      }
+      return;
     }
-    if (wasOpenRef.current) {
-      wasOpenRef.current = false;
-      menuButtonRef.current?.focus();
-    }
+    wasOpenRef.current = true;
+    closeButtonRef.current?.focus();
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
 
   return (
