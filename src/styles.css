@@ -214,7 +214,7 @@
    utilities (bg-<name>, text-<name>, font-<name>). var() values live in
    the imported stylesheet's :root. */
 @theme inline {
-  --font-sans: "Times New Roman";
+  --font-sans: "Space Grotesk", sans-serif;
   --color-site-import-background: var(--site-import-background);
   --color-site-import-foreground: var(--site-import-foreground);
   --color-site-import-primary: var(--site-import-primary);
