@@ -5,11 +5,10 @@ import {
   CircleStop,
   Cog,
   Cpu,
-  Frame,
   Gauge,
   Menu,
-  RotateCw,
-  Wind,
+  Megaphone,
+  PenTool,
   Wrench,
   X,
   Instagram,
@@ -64,14 +63,13 @@ const NAV_LINKS = [
 ];
 
 const SUBSISTEMAS = [
-  { icon: Cog, name: "Powertrain", desc: "Motor, transmissão CVT e powertrain: a força que leva o protótipo adiante." },
-  { icon: Gauge, name: "Suspensão", desc: "Geometria, amortecedores e curso para encarar qualquer terreno." },
-  { icon: Frame, name: "Chassi", desc: "Estrutura tubular projetada, simulada e soldada pela equipe." },
-  { icon: CircleStop, name: "Freios", desc: "Sistema de frenagem dimensionado para segurança e performance." },
-  { icon: RotateCw, name: "Direção", desc: "Precisão e resposta para o piloto dominar a pista." },
   { icon: Cpu, name: "Eletrônica", desc: "Instrumentação, aquisição de dados e telemetria do protótipo." },
-  { icon: Wind, name: "Aerodinâmica", desc: "Carenam e escoamento: eficiência também é aerodinâmica." },
-  { icon: Briefcase, name: "Gestão", desc: "Marketing, patrocínios, logística e a organização que sustenta tudo." },
+  { icon: Gauge, name: "Suspensão & Direção", desc: "Geometria, amortecedores e resposta precisa para dominar qualquer terreno." },
+  { icon: Cog, name: "Transmissão", desc: "A força do motor convertida em tração eficiente até as rodas." },
+  { icon: PenTool, name: "Design & Ergonomia", desc: "Conforto e segurança do piloto, do assento ao acabamento do protótipo." },
+  { icon: CircleStop, name: "Freio", desc: "Sistema de frenagem dimensionado para segurança e performance." },
+  { icon: Megaphone, name: "Marketing", desc: "Comunicação, redes sociais e a presença da Reptiles dentro e fora da pista." },
+  { icon: Briefcase, name: "Gestão & Vendas", desc: "Patrocínios, vendas de produtos e a organização que sustenta a equipe." },
 ];
 
 const INTEGRANTES = [
