@@ -18,6 +18,8 @@ import {
   Trophy,
   Users,
   Calendar,
+  Eye,
+  Target,
 } from "lucide-react";
 
 import heroAction from "../assets/hero-baja-action.jpg";
@@ -267,7 +269,7 @@ function Header() {
 function SectionTitle({ eyebrow, title, dark = false }: { eyebrow: string; title: string; dark?: boolean }) {
   return (
     <div className="mb-12 max-w-2xl">
-      <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-ember">{eyebrow}</p>
+      <p className="mb-3 text-sm font-medium tracking-normal text-ember">{eyebrow}</p>
       <h2 className={`font-display text-3xl font-extrabold leading-tight md:text-5xl ${dark ? "text-cream" : "text-ink"}`}>
         {title}
       </h2>
@@ -295,11 +297,7 @@ function Hero() {
       />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-24 pt-40 md:px-8">
-        <Reveal>
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-flame/40 bg-ink/40 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-flame backdrop-blur-sm">
-            Equipe Baja SAE · PUC-Rio
-          </p>
-        </Reveal>
+        
         <Reveal delay={100}>
           <h1 className="max-w-3xl font-display text-5xl font-black leading-[1.05] text-cream md:text-7xl">
             Engenharia que
@@ -315,17 +313,18 @@ function Hero() {
           </p>
         </Reveal>
         <Reveal delay={300}>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-3">
             <a
               href="#sobre"
-              className="inline-flex items-center gap-2 rounded-md bg-ember px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-ink transition-transform hover:scale-[1.03] hover:bg-flame"
+              className="inline-flex items-center gap-2 rounded-xl bg-ember px-6 py-3 font-display text-sm font-bold uppercase tracking-wide text-ink transition-colors duration-300 hover:bg-flame"
             >
               Conheça a Reptiles
               <ArrowRight className="h-4 w-4" />
             </a>
+
             <a
               href="#subsistemas"
-              className="inline-flex items-center gap-2 rounded-md border border-cream/40 px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-cream backdrop-blur-sm transition-colors hover:border-flame hover:text-flame"
+              className="inline-flex items-center gap-2 rounded-xl border border-cream/30 px-6 py-3 font-display text-sm font-bold uppercase tracking-wide text-cream transition-colors duration-300 hover:border-flame hover:text-flame"
             >
               Conheça nossos subsistemas
             </a>
@@ -343,30 +342,55 @@ function Sobre() {
         <Reveal>
           <div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-wine">Sobre nós</p>
-            <h2 className="font-display text-3xl font-extrabold leading-tight text-ink md:text-5xl">
+            <h2 className="text-center font-display text-4xl font-bold leading-tight text-wine md:text-5xl">
               Uma equipe, uma oficina, uma paixão.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-ink/70">
-              Fundada por estudantes de engenharia da PUC-Rio, a Reptiles nasceu da vontade de tirar a teoria da
-              sala de aula e colocá-la para atravessar lama, subir rampa e completar quatro horas de enduro.
+              Fundada em 2009 por estudantes da PUC-Rio, a Reptiles nasceu da vontade de levar 
+              a teoria para além da sala de aula. A equipe projeta, constrói e testa seus próprios
+              veículos Baja, enfrentando desafios que vão da oficina às pistas de competição.
             </p>
+
             <p className="mt-4 text-lg leading-relaxed text-ink/70">
-              Cada protótipo é projetado, simulado, fabricado e testado pelos próprios integrantes — um ciclo
-              completo de engenharia que forma profissionais e cria memórias para a vida.
+              Formada por alunos de diferentes cursos, a Reptiles é um espaço de aprendizado, 
+              troca e trabalho em equipe. Mais do que construir um carro, buscamos desenvolver 
+              nossos integrantes, que têm a oportunidade de colocar seus conhecimentos em prática, aprender 
+              com outras áreas e desenvolver habilidades como liderança, comunicação e gestão.
             </p>
-            <div className="mt-10 grid grid-cols-3 gap-6">
+
+        
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
               {[
-                { icon: Calendar, value: "10+", label: "anos de história" },
-                { icon: Users, value: "40+", label: "integrantes ativos" },
-                { icon: Trophy, value: "15+", label: "competições disputadas" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <stat.icon className="mb-2 h-5 w-5 text-ember" />
-                  <p className="font-display text-3xl font-black text-wine">{stat.value}</p>
-                  <p className="mt-1 text-sm text-ink/60">{stat.label}</p>
+                {
+                  icon: Users,
+                  title: "Valores",
+                  description:
+                    "Fair play, trabalho coletivo e foco no desenvolvimento dos integrantes.",
+                },
+                {
+                  icon: Eye,
+                  title: "Visão",
+                  description: "Ser uma equipe referência em qualidade e eficiência.",
+                },
+                {
+                  icon: Target,
+                  title: "Missão",
+                  description:
+                    "Promover aprendizado e evolução, desenvolvendo habilidades como liderança, organização e inovação.",
+                },
+              ].map((item) => (
+                <div key={item.title} className="space-y-3">
+                  <item.icon className="h-6 w-6 text-ember" />
+                  <h3 className="font-display text-lg font-bold text-wine">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed text-ink/70">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
+                   
           </div>
         </Reveal>
         <Reveal delay={150}>
